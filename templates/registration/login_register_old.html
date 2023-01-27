@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if page == 'login' %}
+<div>
+  <form method="POST" action="">{% csrf_token %}
+    <label>Username:</label>
+    <input type="text" name="username" placeholder="Enter Username" />
+
+    <label>Password:</label>
+    <input type="password" name="password" placeholder="Enter Password" />
+
+    <input type="submit" value="Login" />
+  </form>
+
+  <p>Haven't signed up yet?</p>
+  <a href="{% url 'register' %}">Sign up</a>
+</div>
+
+{% else %}
+<div>
+  <form method="POST" action="">{% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Register" />
+  </form>
+  <p>Already signed up?</p>
+  <a href="{% url 'login' %}">Log In</a>
+</div>
+
+{% endif %}
+{% endblock content %}
+
+<!-- <a href="{% provider_login_url 'facebook' method='js_sdk' %}">Facebook Connect</a> -->
+<!-- <a href="{% provider_login_url 'facebook' method='oauth2' %}">Facebook OAuth2</a> -->
+
+<!-- <a
+          href="https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?client_id=204491316850-ouj83s8hv33kg8eo5jc2rhpgcbu9mtup.apps.googleusercontent.com&redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2Faccounts%2Fgoogle%2Flogin%2Fcallback%2F&scope=profile&response_type=code&state=8Mzh4pYvTNRY&flowName=GeneralOAuthFlow">
+          Google2</a> -->
+
+<!-- <a
+          href="https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?client_id=204491316850-ouj83s8hv33kg8eo5jc2rhpgcbu9mtup.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Ffactshare.herokuapp.com%2Faccounts%2Fgoogle%2Flogin%2Fcallback%2F&scope=profile&response_type=code&state=hoZZUCYY33ep&flowName=GeneralOAuthFlow">Sign
+          up with Google</a> -->
+
+<!-- <p><a href="http://127.0.0.1:8000/accounts/google/login/?process=login">Google</a></p> -->
+
+<!-- <a href="{% provider_login_url 'google' %}">Google</a> -->
